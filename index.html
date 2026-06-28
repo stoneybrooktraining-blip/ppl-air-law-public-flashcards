@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NZ PPL Air Law Definitions</title>
+  <style>
+    :root {
+      --charcoal: #1f2528;
+      --ink: #263033;
+      --muted: #647074;
+      --gold: #bbb546;
+      --gold-soft: #f5f0e8;
+      --teal: #0f7b6c;
+      --teal-soft: #e4f1ee;
+      --paper: #ffffff;
+      --wash: #f4f6f5;
+      --line: #d8e1de;
+      --shadow: 0 16px 42px rgba(31, 37, 40, 0.12);
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      color: var(--ink);
+      background: #edf2f0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    button, input { font: inherit; }
+    button {
+      min-height: 42px;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    button:focus-visible, input:focus-visible, [tabindex]:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 3px;
+    }
+    .shell {
+      width: min(1040px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 36px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      min-width: 0;
+    }
+    .brand > div:last-child {
+      min-width: 0;
+    }
+    .mark {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      background: var(--gold-soft);
+      color: var(--teal);
+      font-weight: 900;
+    }
+    h1, h2, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 4px;
+      color: var(--charcoal);
+      font-size: 27px;
+      line-height: 1.08;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
+    }
+    .sub, .small, .source {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      overflow-wrap: break-word;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 18px;
+      align-items: start;
+    }
+    .panel, .rail {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .panel { padding: 18px; min-width: 0; }
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .toolbar input {
+      flex: 1 1 220px;
+      min-height: 42px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+    }
+    .primary {
+      padding: 0 14px;
+      background: var(--charcoal);
+      color: #fff;
+      font-weight: 800;
+    }
+    .ghost {
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--charcoal);
+      font-weight: 800;
+    }
+    .flashcard {
+      position: relative;
+      min-height: 460px;
+      perspective: 1200px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    .inner {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      transition: transform 240ms ease;
+    }
+    .flashcard.flipped .inner { transform: rotateY(180deg); }
+    .face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .front {
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+    .back {
+      border-color: var(--teal);
+      transform: rotateY(180deg);
+    }
+    .code {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: rgba(15, 123, 108, 0.1);
+      color: var(--teal);
+      font-family: Menlo, Consolas, monospace;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .front h2 {
+      max-width: 720px;
+      margin: 0;
+      color: var(--charcoal);
+      font-size: 38px;
+      line-height: 1.12;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .definition {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 22px;
+      color: #374346;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .definition p { margin: 0 0 10px; }
+    .source {
+      padding: 12px 22px;
+      border-top: 1px solid var(--line);
+      background: #fafdfc;
+      color: var(--teal);
+      font-style: italic;
+    }
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-top: 14px;
+    }
+    .counter {
+      color: var(--charcoal);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .rail { overflow: hidden; }
+    .rail-section {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .rail-section:last-child { border-bottom: 0; }
+    .rail h2 {
+      margin-bottom: 10px;
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.2;
+    }
+    .queue {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .queue li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #edf1ef;
+      font-size: 13px;
+    }
+    .queue li:last-child { border-bottom: 0; }
+    .queue strong {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    @media (max-width: 820px) {
+      .shell { width: min(100vw - 24px, 720px); padding-top: 16px; }
+      header { display: block; }
+      .brand { align-items: flex-start; }
+      h1 { font-size: 24px; }
+      .meta { justify-content: flex-start; margin-top: 12px; }
+      .layout { grid-template-columns: 1fr; }
+      .flashcard { min-height: 500px; }
+      .front h2 { font-size: 29px; }
+      .card-actions { grid-template-columns: 1fr 1fr; }
+      .counter { grid-column: 1 / -1; order: -1; }
+    }
+    @media (max-width: 480px) {
+      .shell { width: calc(100vw - 24px); }
+      .brand { display: block; }
+      .mark {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      h1 { font-size: 22px; }
+      .toolbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+      .toolbar input {
+        width: 100%;
+        flex-basis: auto;
+        min-width: 0;
+      }
+      #reset { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div class="mark">SB</div>
+        <div>
+          <h1>NZ PPL Air Law Definitions</h1>
+          <p class="sub">Review flashcards for PPL Air Law definitions. Tap or click a card to reveal the definition.</p>
+        </div>
+      </div>
+      <div class="meta">
+        <span class="pill">56 cards</span>
+        <span class="pill">AC-61-3 Subject 4</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <div class="toolbar">
+          <input id="search" type="search" placeholder="Search term, code, definition...">
+          <button type="button" id="shuffle" class="primary">Shuffle</button>
+          <button type="button" id="reset" class="ghost">Reset</button>
+        </div>
+
+        <div id="flashcard" class="flashcard" role="button" tabindex="0" aria-label="Flashcard">
+          <div class="inner">
+            <article class="face front">
+              <span id="cardCode" class="code"></span>
+              <h2 id="cardTerm"></h2>
+              <p class="small">Tap or click to reveal</p>
+            </article>
+            <article class="face back">
+              <div id="cardDefinition" class="definition"></div>
+              <div id="cardSource" class="source"></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button type="button" id="prev" class="ghost">Previous</button>
+          <span id="counter" class="counter"></span>
+          <button type="button" id="next" class="ghost">Next</button>
+        </div>
+      </section>
+
+      <aside class="rail" aria-label="Deck details">
+        <section class="rail-section">
+          <h2>Current Set</h2>
+          <p id="setSummary" class="sub"></p>
+        </section>
+        <section class="rail-section">
+          <h2>Due Next</h2>
+          <ul id="queue" class="queue"></ul>
+        </section>
+        <section class="rail-section">
+          <h2>Note</h2>
+          <p class="sub">This is a public review copy of the PPL Air Law definitions deck only. It is separate from the wider ADS and KDR work.</p>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const originalCards = [{"code":"4.4(a)","term":"Accident","def":"<p><strong>Meaning of accident<\/strong><\/p><p>(1) In this Act, unless the context otherwise requires, <strong>accident<\/strong> means an occurrence associated with the operation of an aircraft that,— (a) in the case of an aircraft intended to be flown with any person on board, takes place between— (i) the time that any person boards the aircraft with the intention of flight; and (ii) the time that— (A) all persons on board have disembarked; and (B) the engine or any propellers or rotors have come to rest; and (b) in the case of an aircraft intended to be flown without any person on board, takes place between— (i) the time that the aircraft is ready to move with the purpose of flight; and (ii) the time that— (A) the aircraft comes to rest at the end of the flight; and (B) the primary propulsion system is shut down.<\/p><p>(2) The occurrence must be one in which— (a) a person is fatally or seriously injured as a result of— (i) being in the aircraft; or (ii) direct contact with any part of the aircraft, including any part that has become detached from the aircraft; or (iii) direct exposure to jet blast; or (b) the aircraft sustains damage or structural failure that— (i) adversely affects the structural strength, performance, or flight characteristics of the aircraft; and (ii) would normally require major repair or replacement of the affected component; or (c) the aircraft is missing or is completely inaccessible.<\/p><p>(3) Subsection (2)(a) does not include— (a) an injury that is self-inflicted or inflicted by another person; or (b) an injury to a stowaway hiding outside the areas normally available to passengers and crew.<\/p><p>(4) In subsection (2)(b), <strong>damage or structural failure<\/strong> does not include— (a) engine failure or damage where the damage is limited to the engine (including its cowlings or its accessories); or (b) damage that is limited to propellers, wing tips, antennas, probes, vanes, tyres, brakes, wheels, fairings, panels, landing gear doors, windscreens, the aircraft skin (including small dents or puncture holes in the aircraft skin), minor damage to main rotor blades or landing gear, or damage resulting from hail or bird strikes (including holes in the radome).<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Accidents are defined in the CA Act, not the CARs. The key elements are: someone is on board intending flight, and something goes badly wrong; death/serious injury, substantial damage, or the aircraft is missing.<\/p>","src":"Civil Aviation Act 2023, section 6"},{"code":"4.4(b)","term":"Act","def":"<p><strong>Act<\/strong> means the Civil Aviation Act 2023:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> When CARs refer to 'the Act', they always mean the Civil Aviation Act 2023 - not any other Act. This replaced the Civil Aviation Act 1990.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(c)","term":"Aerobatic flight","def":"<p><strong>Aerobatic flight<\/strong> means— (1) an intentional manoeuvre in which the aircraft is in sustained inverted flight or is rolled from upright to inverted or from inverted to upright position; or (2) manoeuvres such as rolls, loops, spins, upward vertical flight culminating in a stall turn, hammerhead or whip stall, or a combination of such manoeuvres:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Aerobatic flight isn't just loops and rolls - sustained inverted flight qualifies too. Know the full list: rolls, loops, spins, stall turns, hammerheads, whip stalls.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(d)","term":"Aerodrome","def":"<p><strong>Aerodrome<\/strong> has the meaning given to it in section 5 of the Act:<\/p><p><strong>aerodrome<\/strong> — (a) means any defined area of land or water intended or designed to be used, either wholly or partly, for the landing, departure, or surface movement of aircraft; and (b) includes any other areas, buildings, installations, and equipment that are on or adjacent to an area mentioned in paragraph (a) and that are used in connection with that area or its administration; and (c) where an airport operator is registered in respect of the aerodrome, includes any area included under section 222(3)(b) or 223<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Aerodromes can be on land OR water. The definition includes buildings and equipment - it's not just the runway. 'Intended to be used' is the key; it doesn't have to be in active use.<\/p>","src":"NZ CAR Part 1, rule 1.1 (referring to Civil Aviation Act 2023, section 5)"},{"code":"4.4(e)","term":"Aerodrome elevation","def":"<p>Aerodrome elevation: The elevation of the highest point of the landing area.<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Aerodrome elevation is from the HIGHEST point of the landing area, not an average. This matters because the highest point determines the safe approach path.<\/p>","src":"AIP New Zealand GEN 2.2"},{"code":"4.4(f)","term":"Aerodrome traffic circuit","def":"<p><strong>Aerodrome traffic circuit<\/strong> has the meaning given to it in section 5 of the Act:<\/p><p><strong>aerodrome traffic circuit<\/strong> means the pattern flown by aircraft operating in the vicinity of an aerodrome<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> The circuit pattern has five legs: upwind, crosswind, downwind, base, and final. Standard circuits are left-hand (turn left after take-off) unless otherwise specified by AIP or NOTAM.<\/p>","src":"NZ CAR Part 1, rule 1.1 (referring to Civil Aviation Act 2023, section 5)"},{"code":"4.4(g)","term":"Aeronautical information circular","def":"<p><strong>Aeronautical Information Circular<\/strong> means a notice containing information that— (1) does not qualify for the origination of a NOTAM or for inclusion in the AIPNZ; and (2) relates to flight safety, air navigation, technical, administrative or legislative matters:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> AICs are for non-urgent, longer-term information - think policy updates, regulatory changes, safety notices. Not time-critical like a NOTAM, not permanent enough for the AIP.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(h)","term":"Aeronautical information publication","def":"<p><strong>Aeronautical information publication<\/strong> means a publication issued by, or with the authority of, a State and containing aeronautical information of a lasting character essential to air navigation:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> The AIP contains stable, long-term information essential for flight operations - airspace structure, procedures, aerodrome data, etc. New Zealand's AIP is published by Airways. Amendments are issued regularly.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(i)","term":"AIP supplement","def":"<p><strong>AIP Supplement<\/strong> means temporary changes to the information contained in the AIPNZ that are published by means of special pages:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Supplements are temporary - they change AIP info for a limited period, published on yellow pages in the printed AIP. After the temporary period, the change is either incorporated into the AIP or withdrawn.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(j)","term":"Air traffic control service","def":"<p><strong>Air traffic control service<\/strong> has the meaning given to it in section 5 of the Act:<\/p><p><strong>air traffic control service<\/strong> — (a) means a service provided for the purposes of— (i) preventing collisions between aircraft and between aircraft and obstructions on any manoeuvring area; and (ii) expediting and maintaining a safe and efficient flow of air traffic; and (b) includes— (i) an aerodrome control service: (ii) an area control service: (iii) an approach control service<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> ATC service has two purposes: collision prevention (aircraft vs aircraft, aircraft vs ground obstacles) and efficient traffic flow. It's not just collision prevention; efficiency is also part of the legal definition.<\/p>","src":"NZ CAR Part 1, rule 1.1 (referring to Civil Aviation Act 2023, section 5)"},{"code":"4.4(k)","term":"Airworthiness certificate","def":"<p><strong>Airworthiness certificate<\/strong> means— (1) for a New Zealand registered aircraft, an airworthiness certificate issued by the Director under Part 21, Subpart H; and (2) for a foreign registered aircraft, an airworthiness certificate issued by the competent authority of the State of registry:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> An airworthiness certificate is issued by the Director (for NZ aircraft) or the foreign authority (for overseas-registered aircraft). It's not the same as a review of airworthiness - that's a separate annual check.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(l)","term":"Airworthy condition","def":"<p><strong>Airworthy condition<\/strong> means the condition of an aircraft, including its components, fuel, and other materials and substances essential to the manufacture and operation of the aircraft, that complies with all the requirements prescribed by the _Civil Aviation Rules_ relating to design, manufacture, maintenance, modification, repair, and safety:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Airworthy condition covers everything: the aircraft itself, components, fuel, and materials. It's not just about structural integrity; fuel quality and component compliance also count.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(m)","term":"Alerting service","def":"<p><strong>Alerting service<\/strong> has the meaning given to it in section 5 of the Act:<\/p><p><strong>alerting service<\/strong> means an air traffic service provided to notify appropriate organisations regarding aircraft in need of search and rescue aid, and to assist such organisations as required<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Alerting service is the formal name for what triggers SAR - it's the service that notifies rescue organisations when an aircraft is overdue or in distress. SARTIME ties directly into this.<\/p>","src":"NZ CAR Part 1, rule 1.1 (referring to Civil Aviation Act 2023, section 5)"},{"code":"4.4(n)","term":"Altitude","def":"<p><strong>Altitude<\/strong> means the vertical distance of a level, a point, or an object considered as a point, measured from mean sea level:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Altitude is always from MSL. Height is from a datum (usually the ground). If you're told you're at 3,500 ft altitude, that's 3,500 ft above sea level; not above the ground.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(o)","term":"Apron","def":"<p><strong>Apron<\/strong> means a defined area on a land aerodrome intended to accommodate aircraft for the purpose of loading or unloading passengers or cargo, refuelling, parking, or maintenance:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> The apron is the 'parking area' - where aircraft stop to load/unload, refuel, and get maintenance. It's separate from the manoeuvring area (taxiways and runways).<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(p)","term":"ATC clearance","def":"<p><strong>ATC clearance<\/strong> means authorisation for an aircraft to proceed under conditions specified by an air traffic control unit:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> A clearance is authorisation - it gives you permission to do something. It is NOT an instruction. An instruction is a directive telling you to do something specific. Clearances can have conditions attached.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(q)","term":"ATC instruction","def":"<p><strong>ATC instruction<\/strong> means a directive issued by ATC for the purpose of requiring a pilot to take a specific action:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Instructions are directives - you must comply with them unless safety is at risk. Instructions differ from clearances: a clearance gives permission; an instruction requires action. 'Climb to 3,000 ft' is an instruction; 'cleared for take-off' is a clearance.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(r)","term":"Aviation event","def":"<p><strong>Aviation event<\/strong> means an event to be conducted below the minimum safe heights prescribed under Part 91 that is— (1) an air show or practice for an air show; or (2) an air race or practice for an air race; or (3) an aerobatic competition; or (4) aerobatic training or practice:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Aviation events are activities conducted below normal minimum safe heights - they require special authorisation. Air shows, races, competitions, and aerobatic practice all qualify.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(s)","term":"AWIB service","def":"<p><strong>AWIB Service<\/strong> means an automatic broadcast of aerodrome and weather information provided specifically for the facilitation of aviation, and for the avoidance of doubt, an AWIB service is not an air traffic service:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> AWIB is automated - there's no person on the other end. It broadcasts weather and aerodrome info continuously. Because it's automatic, it is NOT an air traffic service, and you should not expect two-way communication.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(t)","term":"Basic weather report","def":"<p><strong>Basic weather report<\/strong> means a verbal comment, in support of aviation, describing any of the following current weather conditions observed at a particular place or airspace: (1) wind direction and strength:<\/p> <p> (2) mean sea level air pressure: (3) air temperature: (4) weather conditions and cloud cover:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> BWR is a verbal report from AFIS or a ground station giving the current conditions. It's less formal than an ATIS broadcast - think of it as someone reading you the key weather data.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(u)","term":"Ceiling","def":"<p><strong>Ceiling<\/strong> means the height above ground or water of the base of the lowest layer of cloud below 20 000 feet covering more than half the sky:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Ceiling only counts cloud that covers MORE than half the sky (BKN or OVC 5+ oktas). A FEW (1-2 oktas) or SCT (3-4 oktas) layer is not a ceiling. And only below 20,000 ft.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(v)","term":"Controlled flight","def":"<p><strong>Controlled flight<\/strong> has the meaning given to it in section 5 of the Act:<\/p><p><strong>controlled flight<\/strong> means any flight that is subject to an air traffic control clearance under the rules<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Controlled flight doesn't refer to flying ability - it means the flight is operating under an ATC clearance, which requires two-way communication with ATC and compliance with their instructions.<\/p>","src":"NZ CAR Part 1, rule 1.1 (referring to Civil Aviation Act 2023, section 5)"},{"code":"4.4(w)","term":"Cross-country flight","def":"<p><strong>Cross-country flight<\/strong> means a flight which extends more than 25 nautical miles in a straight line distance from the centre of the aerodrome of departure:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Cross-country is measured in a straight line from the centre of the departure aerodrome - not the actual flight path. More than 25 NM by straight-line distance.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(x)","term":"Dangerous goods","def":"<p><strong>Dangerous goods<\/strong> has the meaning given to it in section 5 of the Act:<\/p><p><strong>dangerous goods<\/strong> means articles or substances that are capable of posing a risk to health, safety, property, or the environment and— (a) are listed in, or classified in accordance with, the ICAO’s Technical Instructions for the Safe Transport of Dangerous Goods by Air; or (b) have properties that would result in the articles or substances being classified as dangerous goods under the ICAO’s Technical Instructions for the Safe Transport of Dangerous Goods by Air<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Dangerous goods are defined by the ICAO Technical Instructions, or the IATA DGR - if it's on that list, or has properties that would put it on that list, it's dangerous goods regardless of what the label says.<\/p>","src":"NZ CAR Part 1, rule 1.1 (referring to Civil Aviation Act 2023, section 5)"},{"code":"4.4(y)","term":"Day","def":"<p><strong>Day<\/strong> means the hours between— (1) the beginning of morning civil twilight, which is when the centre of the rising sun’s disc is 6 degrees below the horizon; and (2) the end of evening civil twilight, which is when the centre of the setting sun’s disc is 6 degrees below the horizon:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Day starts at morning civil twilight (not sunrise) and ends at evening civil twilight (not sunset). Civil twilight = sun's centre 6 deg below the horizon. This matters for night flying privileges.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(z)","term":"Dual flight time","def":"<p><strong>Dual flight time<\/strong> means flight time during which a person is receiving flight instruction from an appropriately licensed and rated pilot on board a dual control aircraft:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Dual flight time counts towards licence requirements. The instructor must be appropriately rated and the aircraft must have dual controls. Solo flight time logged with an instructor aboard (e.g. check flights) is not dual - the student must actually be receiving instruction.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(aa)","term":"Emergency locator transmitter","def":"<p><strong>Emergency locator transmitter<\/strong> means an equipment that broadcasts a distinctive signal on a designated radio frequency to facilitate a search and rescue operation:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> ELTs are installed in the aircraft and can be manually activated or automatically activated on impact. They transmit on 406 MHz (and 121.5 MHz for homing) to satellites and SAR services.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(bb)","term":"Final reserve fuel","def":"<p><strong>Final reserve fuel<\/strong> means the minimum quantity of fuel required to provide a margin to secure the safe completion of a flight in the event of any unplanned manoeuvring in the vicinity of the destination or alternate or a suitable aerodrome, as the case may be, and in ordinary circumstances remains on board until completion of the landing:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Final reserve fuel must be on board at landing. It's the last fuel you should touch - if you're into final reserve, you have an emergency. 45 minutes for fixed-wing VFR; 20 minutes for helicopters.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(cc)","term":"Fit and proper person","def":"<p><strong>Fit and proper person<\/strong> means a person who satisfies the fit and proper person test specified in the Act:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> The fit and proper person test applies to anyone applying for or holding an aviation document. The Director has broad discretion under s80 - the listed criteria are indicators, not an exhaustive checklist.<\/p>","src":"NZ CAR Part 1, rule 1.1 (referring to Civil Aviation Act 2023, section 80)"},{"code":"4.4(dd)","term":"Flight information service","def":"<p><strong>Flight information service<\/strong> has the meaning given to it in section 5 of the Act:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Flight information service (FIS) provides information and advice - it is NOT a control service. An AFIS operator gives you traffic information and aerodrome data, but cannot give you ATC clearances or instructions.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(ee)","term":"Flight manual","def":"<p><strong>Flight manual<\/strong> means a manual, associated with the certificate of airworthiness, containing limitations within which the aircraft may be considered airworthy, and instructions and information necessary to the flight crew members for the safe operation of the aircraft:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> The flight manual (or Pilot's Operating Handbook - POH) is the legal document specifying the aircraft's operating limits. Exceeding limitations in the flight manual can render the aircraft unairworthy and invalidate insurance.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(ff)","term":"Flight plan","def":"<p><strong>Flight plan<\/strong> means specified information that is required under the rules to be provided to an ATS unit or to a flight following service regarding an intended flight, or portion of a flight, of an aircraft:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> A flight plan is the information you lodge about your intended flight - route, altitude, times, aircraft details. It's required for IFR flights, flights in certain airspace, and is recommended for VFR cross-country flights.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(gg)","term":"Flight time","def":"<p><strong>Flight time<\/strong> means— (1) for an aircraft other than a balloon, the total time from the moment an aircraft first moves for the purpose of flight until the moment it comes to rest at the end of the flight including any associated push back, taxiing and subsequent holding time; and<\/p> <p> (2) for a balloon, the total time from burner on for the purpose of inflation for flight until the envelope is completely deflated at the end of a flight:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Flight time starts at first movement (not engine start, not when airborne) and ends when the aircraft comes to rest. This includes all taxi time. Contrast with 'airborne time' or 'block time' which are different measures.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(hh)","term":"Height","def":"<p><strong>Height<\/strong> means the vertical distance of a level, a point, or an object considered as a point, measured from a specified datum and includes the vertical dimension of an object:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Height is from a specified datum - usually the ground or threshold elevation. QFE gives you height above the aerodrome. Altitude is from MSL; height is from the ground (or another specified datum).<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(ii)","term":"Air-taxiing (H only)","def":"<p>Air taxiing: Movement of a helicopter/VTOL above the surface of an aerodrome, normally in ground effect and at a ground speed normally less than 37 km/h (20 kt).<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Normal air-taxiing is low-speed helicopter/VTOL movement above the surface, normally in ground effect. Do not define it as above ground effect.<\/p>","src":"AIP New Zealand GEN 2.2"},{"code":"4.4(jj)","term":"Incident","def":"<p><strong>Incident<\/strong> has the meaning given to it in section 5 of the Act:<\/p><p><strong>incident<\/strong> means any occurrence, other than an accident, that is associated with the operation of an aircraft and affects, or could affect, the safety of operation<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Incidents are the near-misses and safety events that didn't quite become accidents. All incidents must be reported to the CAA. The key distinction from an accident: an accident involves actual injury, damage, or missing aircraft; an incident is a safety event that didn't reach that threshold.<\/p>","src":"NZ CAR Part 1, rule 1.1 (referring to Civil Aviation Act 2023, section 5)"},{"code":"4.4(kk)","term":"Landing area","def":"<p><strong>Landing area<\/strong> means that part of a movement area intended for the landing or take-off of aircraft:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> The landing area is the prepared surface for actually landing and taking off - the runway (and parallel taxiways used as runways, or grass areas designated for operations). It's a subset of the movement area.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(ll)","term":"Night","def":"<p><strong>Night<\/strong> means the hours between— (1) the end of evening civil twilight, which is when the centre of the setting sun’s disc is 6 degrees below the horizon; and (2) the beginning of morning civil twilight, which is when the centre of the rising sun’s disc is 6 degrees below the horizon:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Night is the opposite of day - from end of evening twilight to start of morning twilight. Flying at night requires a night rating for PPL holders. Remember civil twilight, not sunset/sunrise.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(mm)","term":"Night vision imaging system","def":"<p><strong>Night vision imaging system –<\/strong> (1) refers to the integration of all the following elements for the successful and safe operation of an aircraft using NVGs – (i) operational procedures; (ii) suitable training, competency and currency requirements; (iii) NVGs and associated equipment; (iv) lighting system and associated aircraft components; (v) continuing airworthiness requirements; but (2) excludes – (i) enhanced vision imaging system: (ii) a synthetic vision system:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> NVIS is the complete system for NVG operations - not just the goggles themselves, but the certified aircraft lighting and cockpit lighting that goes with them. Requires specific training and authorisation.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(nn)","term":"NOTAM","def":"<p><strong>NOTAM<\/strong> means a notice distributed by means of telecommunication containing information concerning the establishment, condition or change in any aeronautical facility, service, procedure or hazard, the timely knowledge of which is essential to personnel concerned with flight operations:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> NOTAMs are time-critical notices about changes affecting flight safety - runway closures, airspace restrictions, equipment outages, hazards. They're issued and distributed electronically through the NOTAM system.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(oo)","term":"Passenger","def":"<p><strong>Passenger<\/strong> has the meaning given to it in section 5 of the Act:<\/p><p><strong>passenger<\/strong>, in subpart 3 of Part 8, has the meaning given to it in section 269(1)<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> A student pilot on a training flight is NOT a passenger - they're being carried for the purpose of receiving instruction. Similarly, an instructor is not a passenger. Everyone else on the aircraft is a passenger.<\/p>","src":"NZ CAR Part 1, rule 1.1 (referring to Civil Aviation Act 2023, section 5)"},{"code":"4.4(pp)","term":"Personal locator beacon","def":"<p><strong>Personal locator beacon<\/strong> means an equipment that broadcasts a distinctive signal on a designated radio frequency to facilitate a search and rescue operation, is designed to be carried on a person, and is manually activated:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> PLBs are carried on people, manually activated, and transmit on 406 MHz to SAR satellites. Unlike an ELT (which is in the aircraft and can be crash-activated), a PLB goes with you if you have to leave the aircraft.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(qq)","term":"Pilot-in-command","def":"<p><strong>Pilot-in-command<\/strong>, has the meaning given to it in section 5 of the Act:<\/p><p><strong>pilot-in-command<\/strong>, in relation to an aircraft,— (a) means the pilot on board the aircraft who is responsible for the operation and safety of the aircraft; and (b) in the absence of a pilot on board the aircraft, means the person who the rules specify as responsible for the operation and safety of the aircraft in accordance with the rules; and (c) in all other circumstances,—<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> The PIC is legally responsible for the flight - even if another pilot is actually flying the aircraft. There is always exactly one PIC. The PIC is the final authority on board.<\/p>","src":"NZ CAR Part 1, rule 1.1 (referring to Civil Aviation Act 2023, section 5)"},{"code":"4.4(rr)","term":"Rating","def":"<p><strong>Rating<\/strong> means an authorisation entered on, or associated with, a licence, certificate, or logbook, and forming part of it, stating special conditions, privileges, or limitations relating to the licence or certificate:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> A rating modifies what you can do with your licence. Type ratings let you fly specific aircraft types. A night rating lets you fly at night. Ratings don't stand alone; they're always attached to a licence.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(ss)","term":"SARTIME","def":"<p><strong>SARTIME<\/strong> means the time nominated by a pilot for the initiation of alerting action:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> SARTIME is what YOU set - it's your responsibility to cancel before that time if you've landed safely. If you forget and your SARTIME passes, search and rescue will be launched. Always cancel your SARTIME after landing.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(tt)","term":"Simultaneous operations - visual conditions","def":"<p>Simultaneous operations — visual conditions: Operations using parallel runways where both may be in use at the time, in accordance with the following criteria (excluding provision for wake turbulence separation requirements): (a) Uncontrolled aerodrome — simultaneous-independent operations, with displacement between parallel runway centrelines not less than 210 m. (b) Controlled aerodrome — aerodrome control service on watch: (i) simultaneous-independent operations: where ATC controls aircraft with displacement between parallel runway centrelines not less than 210 m (not less than 165 m edge-to-edge if grass runways); or (ii) simultaneous-dependent operations: where ATC controls aircraft including sequencing or staggering operations (to avoid side-by-side parallel flight or side-by-side manoeuvring on a parallel runway); or (iii) simultaneous-segregated operations: where ATC controls aircraft departures on one runway and aircraft arrivals on the parallel runway.<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Simultaneous ops on parallel runways have specific separation requirements. At uncontrolled aerodromes, 210 m centreline separation is needed for independent ops. At controlled aerodromes, ATC manages three different types of parallel operations.<\/p>","src":"AIP New Zealand GEN 2.2"},{"code":"4.4(uu)","term":"Take-off weight","def":"<p><strong>Take-off weight<\/strong> means the weight of the aeroplane at the commencement of the take-off run and includes everything and everyone carried in or on the aeroplane at the commencement of the take-off run:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Take-off weight is the total weight at the START of the take-off run - including everything and everyone. It must not exceed the maximum certificated take-off weight for the aircraft.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(vv)","term":"Threshold","def":"<p><strong>Threshold<\/strong> means that point where a 1:20 obstacle-free approach surface intersects the runway surface.<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> The threshold is the start of the landing surface - the painted white stripes at the beginning of the runway. A displaced threshold means the threshold is moved further along the runway (the area before it may be usable for take-off roll but not landing).<\/p>","src":"NZ CAR Part 121, rule 121.3"},{"code":"4.4(ww)","term":"Technical Instructions","def":"<p><strong>Technical Instructions<\/strong> means ICAO Document 9284 _Technical Instructions for the Safe Transport of Dangerous Goods by Air_ approved and published by decision of the Council of the International Civil Aviation Organisation under Annex 18 of the Convention:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> When CARs refer to 'the Technical Instructions', they always mean ICAO Doc 9284. This document defines what is dangerous goods for aviation and how they must be packed, labelled, and transported.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(xx)","term":"Type","def":"<p><strong>Type—<\/strong> (1) in relation to the licensing of aviation personnel means all aircraft of the same basic design, including all modifications thereto except those modifications which result in a significant change in handling or flight characteristics; or (2) in relation to the certification of aircraft, aircraft engines, or propellers, means those aircraft, aircraft engines or propellers which are similar in design:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> For your type rating, all variants of the same basic aircraft design count as one 'type'. A Cessna 172 and a Cessna 172P are the same type for licensing - minor modifications don't create a new type.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(yy)","term":"UNICOM service","def":"<p><strong>UNICOM Service<\/strong> means a ground radio communications service in the aeronautical mobile service providing local aerodrome information for the facilitation of aviation, and, for the avoidance of doubt, a UNICOM service is not an air traffic service:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> UNICOM is a radio service at some uncontrolled aerodromes - typically operated by the aerodrome owner or fuel supplier. You can ask for aerodrome info, but don't expect ATC-level responses. It is NOT an ATS.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(zz)","term":"VFR flight","def":"<p><strong>VFR flight<\/strong> means a flight conducted in accordance with the visual flight rules:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> VFR flight is flight conducted under Part 91 visual flight rules - maintaining VMC, staying clear of cloud, maintaining appropriate visibility. Most PPL flying is VFR.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(aaa)","term":"Vicinity of an aerodrome","def":"<p>Vicinity of an aerodrome: An area around an aerodrome where aircraft carry out manoeuvres associated with entering, leaving, or operating within an aerodrome traffic circuit.<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Treat 'vicinity' as the circuit/arrival/departure manoeuvring area, not a fixed mileage rule unless another rule specifically gives a distance.<\/p>","src":"AIP New Zealand GEN 2.2"},{"code":"4.4(bbb)","term":"Visibility","def":"<p><strong>Visibility<\/strong> means the ability, as determined by atmospheric conditions and expressed in units of measurement, to see and identify prominent unlighted objects by day and prominent lighted objects by night:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Visibility is about identifying objects at a distance - not just detecting light. By day, it's unlighted prominent objects; by night, prominent lighted objects. Visibility minima are specified in Part 91 for VFR flight.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(ccc)","term":"Visual meteorological conditions","def":"<p><strong>Visual meteorological conditions<\/strong> means meteorological conditions expressed in terms of visibility, distance from cloud, and ceiling equal to or better than specified minima:<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> VMC is the combination of conditions (visibility + cloud distance + ceiling) that make VFR flight legal. Below VMC, you need an IFR clearance. The specific minima depend on airspace class and altitude.<\/p>","src":"NZ CAR Part 1, rule 1.1"},{"code":"4.4(ddd)","term":"Visual reference","def":"<p>Visual reference: Continuous reference to terrain (land or water).<\/p><p style=\"background:#F5F0E8;border-left:3px solid #BBB546;padding:8px 10px;margin-top:10px;font-size:13px;\"><strong>Exam tip:<\/strong> Visual reference is what lets you navigate and control the aircraft by looking outside. Losing visual reference in IMC is extremely dangerous - it's the basis of spatial disorientation accidents.<\/p>","src":"AIP New Zealand GEN 2.2"}];
+    let cards = originalCards.slice();
+    let index = 0;
+    let flipped = false;
+
+    const els = {
+      search: document.getElementById("search"),
+      flashcard: document.getElementById("flashcard"),
+      code: document.getElementById("cardCode"),
+      term: document.getElementById("cardTerm"),
+      def: document.getElementById("cardDefinition"),
+      source: document.getElementById("cardSource"),
+      counter: document.getElementById("counter"),
+      setSummary: document.getElementById("setSummary"),
+      queue: document.getElementById("queue")
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function textOnly(html) {
+      const div = document.createElement("div");
+      div.innerHTML = html;
+      return div.textContent || div.innerText || "";
+    }
+
+    function filterCards() {
+      const query = els.search.value.trim().toLowerCase();
+      cards = originalCards.filter((card) => {
+        if (!query) return true;
+        return [card.code, card.term, card.src, textOnly(card.def)].join(" ").toLowerCase().includes(query);
+      });
+      index = 0;
+      flipped = false;
+      render();
+    }
+
+    function currentCard() {
+      return cards[index] || null;
+    }
+
+    function render() {
+      const card = currentCard();
+      els.flashcard.classList.toggle("flipped", flipped);
+      if (!card) {
+        els.code.textContent = "No match";
+        els.term.textContent = "No cards match this search";
+        els.def.innerHTML = "";
+        els.source.textContent = "";
+        els.counter.textContent = "0 / 0";
+        els.queue.innerHTML = "";
+        els.setSummary.textContent = "No matching cards.";
+        return;
+      }
+      els.code.textContent = card.code;
+      els.term.textContent = card.term;
+      els.def.innerHTML = card.def;
+      els.source.textContent = card.src ? "Official reference: " + card.src : "";
+      els.counter.textContent = (index + 1) + " / " + cards.length;
+      els.setSummary.textContent = cards.length === originalCards.length
+        ? "Showing the full PPL Air Law definitions deck."
+        : "Showing " + cards.length + " matching card" + (cards.length === 1 ? "" : "s") + ".";
+      els.queue.innerHTML = cards.slice(index + 1, index + 7).map((item) =>
+        '<li><strong>' + escapeHtml(item.term) + '</strong><span class="pill">' + escapeHtml(item.code) + '</span></li>'
+      ).join("") || '<li><strong>No more cards</strong><span class="pill">end</span></li>';
+    }
+
+    function move(delta) {
+      if (!cards.length) return;
+      index = (index + delta + cards.length) % cards.length;
+      flipped = false;
+      render();
+    }
+
+    document.getElementById("prev").addEventListener("click", () => move(-1));
+    document.getElementById("next").addEventListener("click", () => move(1));
+    document.getElementById("shuffle").addEventListener("click", () => {
+      cards.sort(() => Math.random() - 0.5);
+      index = 0;
+      flipped = false;
+      render();
+    });
+    document.getElementById("reset").addEventListener("click", () => {
+      els.search.value = "";
+      cards = originalCards.slice();
+      index = 0;
+      flipped = false;
+      render();
+    });
+    els.search.addEventListener("input", filterCards);
+    els.flashcard.addEventListener("click", () => {
+      flipped = !flipped;
+      render();
+    });
+    els.flashcard.addEventListener("keydown", (event) => {
+      if (event.key === " " || event.key === "Enter") {
+        event.preventDefault();
+        flipped = !flipped;
+        render();
+      }
+      if (event.key === "ArrowRight") move(1);
+      if (event.key === "ArrowLeft") move(-1);
+    });
+
+    render();
+  </script>
+</body>
+</html>

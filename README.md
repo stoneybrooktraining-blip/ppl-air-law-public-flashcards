@@ -1,10 +1,12 @@
-# NZ PPL Air Law Definitions
+# NZ PPL Law KDR Flashcards
 
-Public review copy of the Stoneybrook NZ PPL Air Law definitions flashcards.
+Public review copy of the Stoneybrook NZ PPL Law KDR flashcards.
 
-- Course: AC-61-3 Subject 4
-- Cards: 56
-- Scope: PPL Air Law definitions only
-- Not included: CPL/IFR/ATPL decks, KDR Refresher data, ADS integration code
+- Course: PPL Law
+- Cards: 246
+- Structure: one flashcard per KDR code
+- Source data: KDR Refresher data/ppl-law.json
+- Source display: official references only
+- Not included: other subjects, student uploads, ADS authentication, or the full KDR Refresher app
 
-This is a static GitHub Pages viewer generated from the private ADS law definition registry.
+This repository is intentionally public for review. The standalone HTML embeds the PPL Law review cards directly; there is no separate JSON file in this repo.
